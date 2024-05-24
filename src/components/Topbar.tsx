@@ -4,6 +4,7 @@ import { Button } from "./ui/button";
 import Image from "next/image";
 import ProfileButton from "./ProfileButton";
 import ChatgptButton from "./ChatgptButton";
+import { MobileSidebar } from "./Sidebar";
 
 interface Props {
   isSidebarOpen: boolean;
@@ -13,9 +14,11 @@ interface Props {
 const Topbar = ({ isSidebarOpen, toggleSidebar }: Props) => {
   return (
     <nav className="h-14 flex p-4 items-center  justify-between ">
-      <button className="h-14 w-14 flex items-center justify-center sm:hidden ">
-        <Icon src="/icons/hamburger.svg" alt="open-sidebar" />
-      </button>
+      <MobileSidebar
+        isSidebarOpen={isSidebarOpen}
+        toggleSidebar={toggleSidebar}
+      />
+
       <div className="flex justify-evenly items-center">
         <button
           onClick={toggleSidebar}

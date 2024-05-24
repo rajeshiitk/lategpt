@@ -12,11 +12,12 @@ const ProfileButton = () => {
   const onLogout = async () => {};
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className="outline-none">
+      <DropdownMenuTrigger className="flex items-center gap-4 px-4 outline-none">
         <Avatar>
           <AvatarImage src={"/avatar.png"} />
           <AvatarFallback>RC</AvatarFallback>
         </Avatar>
+        <p className="sm:hidden">Rajesh Choudhary</p>
       </DropdownMenuTrigger>
       <DropdownMenuContent sideOffset={2} className="w-72 rounded-2xl mr-2 p-2">
         <DropdownMenuItem className="rounded-lg focus:bg-accent/50 flex gap-2 cursor-pointer p-3">

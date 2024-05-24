@@ -7,6 +7,8 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Icon } from "@/components/Icon";
+import { Sheet, SheetClose, SheetContent, SheetTrigger } from "./ui/sheet";
+import ProfileButton from "./ProfileButton";
 
 type Props = {
   isSidebarOpen: boolean;
@@ -202,14 +204,16 @@ const timelineData: Timeline[] = [
 export default function Sidebar({ isSidebarOpen, toggleSidebar }: Props) {
   return (
     <div
-      className={cn("h-[calc(100svh)] bg-sidebar relative  transition-all ", {
-        "-translate-x-full": !isSidebarOpen,
-        "w-full  max-w-[244px]": isSidebarOpen,
-      })}
+      className={cn(
+        "h-[calc(100svh)] bg-sidebar relative hidden sm:block  transition-all ",
+        {
+          "-translate-x-full": !isSidebarOpen,
+          "w-full  max-w-[244px]": isSidebarOpen,
+        }
+      )}
     >
       {isSidebarOpen && (
         <div className={cn("h-[calc(100svh)]  w-full  pl-1 pr-2 pt-20    ")}>
-          {/* new chat btn */}
           <div className="absolute top-2 left-0 pl-2 pr-2 h-12 w-full ">
             <div className="flex   justify-between w-full  items-center  rounded-lg transition-all ">
               <button onClick={toggleSidebar}>
@@ -220,8 +224,6 @@ export default function Sidebar({ isSidebarOpen, toggleSidebar }: Props) {
               </button>
             </div>
           </div>
-
-          {/* timeles */}
           <div className="w-full h-[calc(100svh-130px)] custom-scrollbar flex flex-col px-2 gap-2 overflow-auto">
             {timelineData.map((d, i) => (
               <Timeline key={i} label={d.label} timelines={d.timelines} />
@@ -283,3 +285,51 @@ function Timeline(props: Timeline) {
     </div>
   );
 }
+
+// mobile sidebar
+
+export const MobileSidebar = ({ isSidebarOpen, toggleSidebar }: Props) => {
+  return (
+    <Sheet>
+      <SheetTrigger className="h-14 w-14 relative flex items-center justify-center sm:hidden ">
+        <Icon src="/icons/hamburger.svg" alt="open-sidebar" />
+      </SheetTrigger>
+      <SheetContent side="left" className="h[calc(100svh) ">
+        <div className={cn("h-[calc(100svh)]  w-full    ")}>
+          <div className="flex bg-background px-4  py-2 z-30   absolute top-0 left-0 justify-between w-full  items-center  rounded-lg transition-all ">
+            <SheetClose>
+              <Icon src="/icons/hamburger.svg" alt="close-sidebar" />
+            </SheetClose>
+            <button>
+              <Icon src="/icons/new-chat.svg" alt="chat" />
+            </button>
+          </div>
+          <div className="w-full h-[calc(100svh-100px)] custom-scrollbar flex flex-col px-2 gap-2 overflow-auto">
+            {timelineData.map((d, i) => (
+              <Timeline key={i} label={d.label} timelines={d.timelines} />
+            ))}
+          </div>
+          <div className=" h-fit p-1  bg-background flex  gap-2 flex-col absolute bottom-0  left-0">
+            <Button variant="ghost" className="w-full  gap-2 flex">
+              <Image
+                className=" rounded-full border p-1"
+                src="/icons/sparkle.svg"
+                width={32}
+                height={32}
+                alt="sparkle"
+              />
+
+              <div>
+                <p className="text-xs text-left ">Upgrade plan</p>
+                <p className="text-xs opacity-60">
+                  Get GPT-4, DALL·E, and more
+                </p>
+              </div>
+            </Button>
+            <ProfileButton />
+          </div>
+        </div>
+      </SheetContent>
+    </Sheet>
+  );
+};
