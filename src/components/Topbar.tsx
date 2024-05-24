@@ -1,8 +1,11 @@
 import React from "react";
 
-interface Props {}
+interface Props {
+  isSidebarOpen: boolean;
+  toggleSidebar: () => void;
+}
 
-const Topbar = (props: Props) => {
+const Topbar = ({ isSidebarOpen, toggleSidebar }: Props) => {
   return <div className="h-14  ">Topbar</div>;
 };
 
