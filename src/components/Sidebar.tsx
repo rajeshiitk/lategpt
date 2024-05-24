@@ -214,7 +214,7 @@ export default function Sidebar({ isSidebarOpen, toggleSidebar }: Props) {
     >
       {isSidebarOpen && (
         <div className={cn("h-[calc(100svh)]  w-full  pl-1 pr-2 pt-20    ")}>
-          <div className="absolute top-2 left-0 pl-2 pr-2 h-12 w-full ">
+          <div className="absolute  top-2 left-0 pl-2 pr-2 h-12 w-full ">
             <div className="flex   justify-between w-full  items-center  rounded-lg transition-all ">
               <button onClick={toggleSidebar}>
                 <Icon src="/icons/sidebar.svg" alt="chat" />
@@ -232,7 +232,7 @@ export default function Sidebar({ isSidebarOpen, toggleSidebar }: Props) {
           <div className="h-12 p-1">
             <Button variant="ghost" className="w-full flex gap-2 h-full">
               <Image
-                className=" rounded-full border p-1"
+                className=" rounded-full dark:invert border p-1"
                 src="/icons/sparkle.svg"
                 width={24}
                 height={24}
@@ -257,19 +257,19 @@ function Timeline(props: Timeline) {
   const pathName = usePathname();
 
   return (
-    <div className="w-full  flex flex-col  ">
+    <div className="w-full   flex flex-col  ">
       <p className="text-xs opacity-70 font-medium px-2 py-1">{props.label}</p>
 
       {props.timelines.map((d, i) => (
         <Link
           key={i}
           className={cn(
-            "p-2 group ease-in-out duration-300  hover:bg-[#ececec] rounded-lg transition-all items-center text-sm w-full flex justify-between  ",
+            "p-2 group ease-in-out duration-300  hover:bg-accent rounded-lg transition-all items-center text-sm w-full flex justify-between  ",
             { "": `/${d.href}` === pathName }
           )}
           href={d.href}
         >
-          <div className="text-ellipsis justify-center items-center text-sm text-[#0d0d0d]   overflow-hidden w-[90%] whitespace-nowrap">
+          <div className="text-ellipsis justify-center items-center text-sm   overflow-hidden w-[90%] whitespace-nowrap">
             {d.title}
           </div>
           <div className="  transition-all items-center hidden group-hover:flex ease-in-out duration-300 ">
@@ -291,10 +291,10 @@ function Timeline(props: Timeline) {
 export const MobileSidebar = ({ isSidebarOpen, toggleSidebar }: Props) => {
   return (
     <Sheet>
-      <SheetTrigger className="h-14 w-14 relative flex items-center justify-center sm:hidden ">
+      <SheetTrigger className="h-14  w-14 relative flex items-center justify-center sm:hidden ">
         <Icon src="/icons/hamburger.svg" alt="open-sidebar" />
       </SheetTrigger>
-      <SheetContent side="left" className="h[calc(100svh) p-1 ">
+      <SheetContent side="left" className="h[calc(100svh)  p-1 ">
         <div className={cn("h-[calc(100svh)]  w-full     ")}>
           <div className="flex bg-background px-4  py-4 z-30   absolute top-0 left-0 justify-between w-full  items-center  rounded-lg transition-all ">
             <SheetClose>
@@ -312,7 +312,7 @@ export const MobileSidebar = ({ isSidebarOpen, toggleSidebar }: Props) => {
           <div className=" h-fit py-2 px-1  bg-background flex  gap-3 flex-col absolute bottom-0  left-0">
             <Button variant="ghost" className="w-full  gap-2 flex">
               <Image
-                className=" rounded-full border p-1"
+                className=" dark:invert rounded-full border p-1"
                 src="/icons/sparkle.svg"
                 width={36}
                 height={36}

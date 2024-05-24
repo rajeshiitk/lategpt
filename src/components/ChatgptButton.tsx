@@ -18,6 +18,7 @@ const ChatgptButton = () => {
         <div className="p-2 hover:bg-accent/50 rounded-lg opacity-60 focus:bg-accent/50  text-lg  flex items-center">
           ChatGPT
           <Image
+            className="dark:invert"
             src="/icons/down-chevron.svg"
             width={16}
             height={16}
@@ -32,7 +33,7 @@ const ChatgptButton = () => {
         <DropdownMenuItem className="rounded-lg justify-center items-center focus:bg-accent/50 flex gap-4 cursor-pointer px-2 py-3">
           <div className="w-full flex gap-2 ">
             <Image
-              className=" bg-accent/70 rounded-full w-fit p-2"
+              className=" dark:invert bg-accent/70 rounded-full w-fit p-2"
               src="/icons/sparkle-outline.svg"
               width={20}
               height={20}
@@ -54,7 +55,7 @@ const ChatgptButton = () => {
         <DropdownMenuItem className="rounded-lg justify-center items-center focus:bg-accent/50 flex gap-4 cursor-pointer px-2 py-3">
           <div className="w-full flex gap-2 ">
             <Image
-              className=" bg-accent/70 rounded-full w-fit p-2"
+              className=" bg-accent/70 dark:invert rounded-full w-fit p-2"
               src="/icons/everyday-chatgpt.svg"
               width={20}
               height={20}
@@ -67,6 +68,7 @@ const ChatgptButton = () => {
             </div>
           </div>
           <Image
+            className="dark:invert"
             src="/icons/right-tick.svg"
             width={20}
             height={20}
@@ -74,11 +76,11 @@ const ChatgptButton = () => {
           />
         </DropdownMenuItem>
 
-        <DropdownMenuSeparator />
+        <DropdownMenuSeparator className="dark:invert" />
         <DropdownMenuItem className="rounded-lg justify-center items-center focus:bg-accent/50 flex gap-4 cursor-pointer px-2 py-1">
           <div className="w-full items-center flex gap-2 ">
             <Image
-              className=" rounded-full w-fit p-2"
+              className=" rounded-full dark:invert w-fit p-2"
               src="/icons/temp-chat.svg"
               width={20}
               height={20}
@@ -86,7 +88,7 @@ const ChatgptButton = () => {
             />
             <p className="text-xs text-left ">Temporary Chat</p>
           </div>
-          <Switch />
+          <Switch className="" />
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

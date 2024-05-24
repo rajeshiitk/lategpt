@@ -12,17 +12,17 @@ const ProfileButton = () => {
   const onLogout = async () => {};
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className="flex items-center gap-4 px-4 outline-none">
+      <DropdownMenuTrigger className="flex  items-center gap-4 px-4 outline-none">
         <Avatar>
           <AvatarImage src={"/avatar.png"} />
-          <AvatarFallback>RC</AvatarFallback>
+          <AvatarFallback className="dark:invert">RC</AvatarFallback>
         </Avatar>
         <p className="sm:hidden">Rajesh Choudhary</p>
       </DropdownMenuTrigger>
       <DropdownMenuContent sideOffset={2} className="w-72 rounded-2xl mr-2 p-2">
         <DropdownMenuItem className="rounded-lg focus:bg-accent/50 flex gap-2 cursor-pointer p-3">
           <Image
-            className=" opacity-60 "
+            className=" dark:invert  opacity-60 "
             src="/icons/costumize.svg"
             width={24}
             height={24}
@@ -32,7 +32,7 @@ const ProfileButton = () => {
         </DropdownMenuItem>
         <DropdownMenuItem className="rounded-lg flex focus:bg-accent/50 gap-2 cursor-pointer p-3">
           <Image
-            className=" opacity-60 "
+            className=" dark:invert opacity-60 "
             src="/icons/settings.svg"
             width={24}
             height={24}
@@ -40,13 +40,13 @@ const ProfileButton = () => {
           />
           Settings
         </DropdownMenuItem>
-        <DropdownMenuSeparator />
+        <DropdownMenuSeparator className="dark:invert dark:opacity-10" />
         <DropdownMenuItem
           className="rounded-lg flex gap-2 focus:bg-accent/50 cursor-pointer p-3"
           onClick={onLogout}
         >
           <Image
-            className=" opacity-60 "
+            className="dark:invert  opacity-60 "
             src="/icons/logout.svg"
             width={24}
             height={24}
