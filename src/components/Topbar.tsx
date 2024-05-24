@@ -5,6 +5,7 @@ import Image from "next/image";
 import ProfileButton from "./ProfileButton";
 import ChatgptButton from "./ChatgptButton";
 import { MobileSidebar } from "./Sidebar";
+import { cn } from "@/lib/utils";
 
 interface Props {
   isSidebarOpen: boolean;
@@ -22,17 +23,19 @@ const Topbar = ({ isSidebarOpen, toggleSidebar }: Props) => {
       <div className="flex justify-evenly items-center">
         <button
           onClick={toggleSidebar}
-          className={`h-14 w-14 sm:flex hidden items-center justify-center ${
-            isSidebarOpen ? "hidden" : "block"
-          }`}
+          className={cn("h-14 w-14  hidden items-center justify-center", {
+            "sm:hidden": isSidebarOpen,
+            "sm:flex": !isSidebarOpen,
+          })}
         >
           <Icon src="/icons/sidebar.svg" alt="sidebar" />
         </button>
         <button
           onClick={toggleSidebar}
-          className={`h-14 w-14 sm:flex hidden items-center justify-center ${
-            isSidebarOpen ? "hidden" : "block"
-          }`}
+          className={cn("h-14 w-14  hidden items-center justify-center", {
+            "sm:hidden": isSidebarOpen,
+            "sm:flex": !isSidebarOpen,
+          })}
         >
           <Icon src="/icons/new-chat.svg" alt="new-chat" />
         </button>
