@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import { Icon } from "@/components/Icon";
 
 type Props = {
   isSidebarOpen: boolean;
@@ -197,14 +198,6 @@ const timelineData: Timeline[] = [
     ],
   },
 ];
-
-export function Icon({ src, alt }: { src: string; alt: string }) {
-  return (
-    <div className=" hover:bg-[#ececec]  opacity-60 p-2.5 rounded-lg ">
-      <Image src={src} width={24} height={24} alt={alt} />
-    </div>
-  );
-}
 
 export default function Sidebar({ isSidebarOpen, toggleSidebar }: Props) {
   return (

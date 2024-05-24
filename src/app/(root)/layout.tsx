@@ -11,7 +11,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   }
 
   return (
-    <main className="h-screen  flex">
+    <main className="h-[calc(100svh)]   flex">
       <Sidebar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
       <div className="w-full">
         <Topbar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
