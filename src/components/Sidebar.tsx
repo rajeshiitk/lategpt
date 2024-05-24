@@ -294,9 +294,9 @@ export const MobileSidebar = ({ isSidebarOpen, toggleSidebar }: Props) => {
       <SheetTrigger className="h-14 w-14 relative flex items-center justify-center sm:hidden ">
         <Icon src="/icons/hamburger.svg" alt="open-sidebar" />
       </SheetTrigger>
-      <SheetContent side="left" className="h[calc(100svh) ">
-        <div className={cn("h-[calc(100svh)]  w-full    ")}>
-          <div className="flex bg-background px-4  py-2 z-30   absolute top-0 left-0 justify-between w-full  items-center  rounded-lg transition-all ">
+      <SheetContent side="left" className="h[calc(100svh) p-1 ">
+        <div className={cn("h-[calc(100svh)]  w-full     ")}>
+          <div className="flex bg-background px-4  py-4 z-30   absolute top-0 left-0 justify-between w-full  items-center  rounded-lg transition-all ">
             <SheetClose>
               <Icon src="/icons/hamburger.svg" alt="close-sidebar" />
             </SheetClose>
@@ -309,13 +309,13 @@ export const MobileSidebar = ({ isSidebarOpen, toggleSidebar }: Props) => {
               <Timeline key={i} label={d.label} timelines={d.timelines} />
             ))}
           </div>
-          <div className=" h-fit p-1  bg-background flex  gap-2 flex-col absolute bottom-0  left-0">
+          <div className=" h-fit py-2 px-1  bg-background flex  gap-3 flex-col absolute bottom-0  left-0">
             <Button variant="ghost" className="w-full  gap-2 flex">
               <Image
                 className=" rounded-full border p-1"
                 src="/icons/sparkle.svg"
-                width={32}
-                height={32}
+                width={36}
+                height={36}
                 alt="sparkle"
               />
 
