@@ -23,7 +23,7 @@ const BottomInputBar = (props: Props) => {
             src="/icons/arrow-up.svg"
             width={24}
             height={24}
-            className="invert"
+            className="invert dark:invert-0"
             alt="send"
           />
         </Button>
