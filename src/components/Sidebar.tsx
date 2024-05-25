@@ -267,7 +267,7 @@ function Timeline(props: Timeline) {
             "p-2 group ease-in-out duration-300  hover:bg-accent rounded-lg transition-all items-center text-sm w-full flex justify-between  ",
             { "": `/${d.href}` === pathName }
           )}
-          href={d.href}
+          href={`/chat/${d.href}`}
         >
           <div className="text-ellipsis justify-center items-center text-sm   overflow-hidden w-[90%] whitespace-nowrap">
             {d.title}

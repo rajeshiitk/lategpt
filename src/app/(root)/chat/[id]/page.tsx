@@ -1,10 +1,22 @@
 "use client";
 import BottomInputBar from "@/components/BottomInputBar";
-import React from "react";
+import React, { useEffect } from "react";
 import { useChat } from "ai/react";
 import Markdown from "@/components/markdown";
+import { useRouter } from "next/navigation";
+import { useUserStore } from "@/providers/user-store-provider";
 
 const Page = () => {
+  const router = useRouter();
+  const user = useUserStore((state) => state.user);
+
+  useEffect(() => {
+    console.log({ user });
+    if (!user) {
+      router.push("/login");
+    }
+  }, []);
+
   const {
     input,
     data,

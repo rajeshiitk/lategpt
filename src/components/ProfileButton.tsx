@@ -1,3 +1,4 @@
+"use client";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -7,9 +8,29 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
+import { createClient } from "@/utils/supabase/client";
+import { useUserStore } from "@/providers/user-store-provider";
 
 const ProfileButton = () => {
-  const onLogout = async () => {};
+  const logout = useUserStore((state) => state.logout);
+  const router = useRouter();
+  const onLogout = async () => {
+    const supabase = createClient();
+
+    const { error } = await supabase.auth.signOut();
+
+    if (error) {
+      toast.error("Failed to log out");
+    }
+
+    logout();
+    router.push("/login");
+
+    // revalidatePath("/", "layout");
+    // redirect("/login");
+  };
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="flex  items-center gap-4 px-4 outline-none">

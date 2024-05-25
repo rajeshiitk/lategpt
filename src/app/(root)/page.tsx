@@ -1,11 +1,12 @@
 "use client";
 import BottomInputBar from "@/components/BottomInputBar";
 import DemoCard from "@/components/DemoCard";
+import { useUserStore } from "@/providers/user-store-provider";
 import { createClient } from "@/utils/supabase/client";
 import { useChat } from "ai/react";
 import Image from "next/image";
-import { redirect } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 import { toast } from "sonner";
 
 const demoCardData = [
@@ -36,16 +37,21 @@ const demoCardData = [
 ];
 
 export default function Home() {
-  const [user, setUser] = useState({});
+  const { user, setUser } = useUserStore((state) => ({
+    user: state.user,
+    setUser: state.setUser,
+  }));
+  const router = useRouter();
 
   useEffect(() => {
     async function getUser() {
       const supabase = createClient();
       const { data, error } = await supabase.auth.getUser();
       if (error || !data?.user) {
-        redirect("/login");
+        toast.error(JSON.stringify(error));
+        router.push("/login");
       } else {
-        toast.success(JSON.stringify(data.user));
+        toast.success(JSON.stringify(data.user.email));
         setUser(data.user);
       }
     }
