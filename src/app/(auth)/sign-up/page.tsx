@@ -11,7 +11,7 @@ import { Input } from "@/components/ui/input";
 // import { emailLogin, signup } from "./actions";
 import { redirect } from "next/navigation";
 import { createClient } from "@/utils/supabase/server";
-import { login } from "@/actions/action";
+import { signup } from "@/actions/action";
 import Link from "next/link";
 
 export default async function Login({
@@ -33,13 +33,13 @@ export default async function Login({
     <section className="h-[calc(100vh-57px)] flex justify-center items-center">
       <Card className="mx-auto max-w-sm">
         <CardHeader>
-          <CardTitle className="text-2xl">Login</CardTitle>
+          <CardTitle className="text-2xl">Sign Up</CardTitle>
           <CardDescription>
             Enter your email below to login to your account
           </CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col gap-4">
-          <form id="login-form" className="grid gap-4">
+          <form id="sign-up-form" className="grid gap-4">
             <div className="grid gap-2">
               <Label htmlFor="email">Email</Label>
               <Input
@@ -67,14 +67,14 @@ export default async function Login({
                 {searchParams.message}
               </div>
             )}
-            <Button formAction={login} className="w-full">
-              Login
+            <Button formAction={signup} form="sign-up-form" className="w-full">
+              Sign Up
             </Button>
           </form>
           <div className="text-center text-sm">
-            Don&apos;t have an account?{" "}
+            Already have an account?{" "}
             <Link href="/sign-up" className="underline">
-              Sign up
+              Login
             </Link>
           </div>
         </CardContent>
