@@ -1,5 +1,6 @@
 import BottomInputBar from "@/components/BottomInputBar";
 import DemoCard from "@/components/DemoCard";
+import { useChat } from "ai/react";
 import Image from "next/image";
 
 const demoCardData = [
@@ -30,6 +31,7 @@ const demoCardData = [
 ];
 
 export default function Home() {
+  const { input, isLoading, handleSubmit, handleInputChange } = useChat();
   return (
     <main className="flex relative  h-[calc(100svh-56px)] py-20 w-full gap-12 max-w-3xl  mx-auto flex-col items-center ">
       <Image src="/icons/chatgpt-logo.svg" width={72} height={72} alt="logo" />
@@ -38,7 +40,12 @@ export default function Home() {
           <DemoCard key={index} index={index} {...data} />
         ))}
       </div>
-      <BottomInputBar />
+      <BottomInputBar
+        handleSubmit={handleSubmit}
+        input={input}
+        handleInputChange={handleInputChange}
+        isLoading={isLoading}
+      />
     </main>
   );
 }

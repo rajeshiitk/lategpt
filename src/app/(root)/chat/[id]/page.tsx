@@ -21,15 +21,15 @@ const Page = () => {
   } = useChat();
 
   return (
-    <main className="flex relative  h-[calc(100svh-56px)] py-4 w-full gap-12 max-w-5xl  mx-auto flex-col items-center  px-2 ">
+    <main className="flex relative  h-[calc(100svh-56px)] py-4 w-full gap-12 mx-auto max-w-7xl flex-col items-center  px-2 ">
       {error && (
         <div className="fixed top-0 left-0 w-full p-4 text-center text-white bg-red-500">
           {error.message}
         </div>
       )}
-      <ScrollArea className=" overflow-x-scroll break-all w-full h-[calc(100%-90px)] relative rounded-2xl  p-2">
+      <div className="  text-wrap break-all w-full h-[calc(100%-90px)] custom-scrollbar  overflow-auto  relative   px-2">
         {messages.map((message, index) => (
-          <div key={index} className="break-words  flex flex-col  ">
+          <div key={index} className="break-words text-wrap flex flex-col  ">
             <div
               className={`${
                 message.role === "user" ? "bg-accent self-end" : ""
@@ -43,7 +43,7 @@ const Page = () => {
             </div>
           </div>
         ))}
-      </ScrollArea>
+      </div>
 
       <BottomInputBar
         handleSubmit={handleSubmit}
