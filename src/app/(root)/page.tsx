@@ -1,3 +1,4 @@
+"use client"
 import BottomInputBar from "@/components/BottomInputBar";
 import DemoCard from "@/components/DemoCard";
 import { useChat } from "ai/react";
