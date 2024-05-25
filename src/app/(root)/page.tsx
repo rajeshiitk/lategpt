@@ -1,8 +1,12 @@
-"use client"
+"use client";
 import BottomInputBar from "@/components/BottomInputBar";
 import DemoCard from "@/components/DemoCard";
+import { createClient } from "@/utils/supabase/client";
 import { useChat } from "ai/react";
 import Image from "next/image";
+import { redirect } from "next/navigation";
+import { useEffect, useState } from "react";
+import { toast } from "sonner";
 
 const demoCardData = [
   {
@@ -32,6 +36,23 @@ const demoCardData = [
 ];
 
 export default function Home() {
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    async function getUser() {
+      const supabase = createClient();
+      const { data, error } = await supabase.auth.getUser();
+      if (error || !data?.user) {
+        redirect("/login");
+      } else {
+        toast.success(JSON.stringify(data.user));
+        setUser(data.user);
+      }
+    }
+    getUser();
+  }, []);
+
+  console.log({ user });
   const { input, isLoading, handleSubmit, handleInputChange } = useChat();
   return (
     <main className="flex relative  h-[calc(100svh-56px)] py-20 w-full gap-12 max-w-3xl  mx-auto flex-col items-center ">
